@@ -1,12 +1,33 @@
-# React + Vite
+# 📝 Blog Personal en React + Markdown
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un blog desarrollado en **React** usando **Vite** como bundler y con entradas escritas en archivos **Markdown** (`.md`). Es un enfoque estático, ideal para comenzar con un sistema de blog simple, rápido y escalable.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Stack Tecnológico
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** – Biblioteca de interfaz de usuario.
+- **Vite** – Bundler ultrarrápido para desarrollo.
+- **Tailwind CSS** – Estilos utilitarios modernos.
+- **React Router DOM** – Enrutamiento SPA.
+- **React Markdown** – Renderizado de archivos `.md`.
+- **Remark GFM** – Extensión para soporte de Markdown de GitHub.
+- **Gray Matter** – Lectura de metadatos (frontmatter) desde archivos Markdown.
+- **date-fns** – Formateo de fechas.
+
+---
+
+## ✅ Estado actual
+
+- ✔ Blog sin backend
+- ✔ Posts escritos en `.md`
+- ✔ Listado y visualización básica
+- 🔜 Funcionalidades futuras: comentarios, modo oscuro, autenticación, panel de autor, búsqueda...
+
+---
+
+## 📄 Licencia
+
+MIT
