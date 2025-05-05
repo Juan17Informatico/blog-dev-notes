@@ -1,5 +1,10 @@
+import { BrowserRouter } from "react-router-dom"
+import { BlogAppRouter } from "./router/BlogAppRouter"
+
 export const BlogApp = () => {
   return (
-    <div className="text-3xl font-bold underline" >BlogApp</div>
+    <BrowserRouter>
+      <BlogAppRouter />
+    </BrowserRouter>
   )
 }
