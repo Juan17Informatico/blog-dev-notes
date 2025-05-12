@@ -31,3 +31,11 @@ Este proyecto es un blog desarrollado en **React** usando **Vite** como bundler 
 ## 📄 Licencia
 
 MIT
+
+## Nuevo Stack tecnologico
+
+- **Frontend**: React, Vite, Axios, React Router, Formik, Tailwind CSS.
+
+- **Backend**: Node.js, Express, PostgreSQL, Sequelize, JWT (si se necesita autenticación).
+
+- **Herramientas adicionales**: CORS, dotenv, Bcryptjs, Nodemon.
