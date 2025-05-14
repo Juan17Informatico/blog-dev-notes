@@ -41,3 +41,31 @@ MIT
 - **Backend**: Node.js, Express, PostgreSQL, Sequelize, JWT (si se necesita autenticación).
 
 - **Herramientas adicionales**: CORS, dotenv, Bcryptjs, Nodemon.
+
+## Paleta de colores
+
+### ☀️ Modo Claro
+
+| Rol                     | Color Hex |
+| ----------------------- | --------- |
+| Fondo principal         | `#F9FAFB` |
+| Texto primario          | `#1E1E2F` |
+| Texto secundario        | `#4B5563` |
+| Azul oscuro (base)      | `#1E3A8A` |
+| Azul claro (hover)      | `#3B82F6` |
+| Gris claro (UI)         | `#E5E7EB` |
+| Acento verde (opcional) | `#10B981` |
+
+---
+
+### 🌙 Modo Oscuro
+
+| Rol                    | Color Hex |
+| ---------------------- | --------- |
+| Fondo principal        | `#0F172A` |
+| Texto primario         | `#F1F5F9` |
+| Texto secundario       | `#94A3B8` |
+| Azul oscuro (base)     | `#1E3A8A` |
+| Azul brillante (hover) | `#60A5FA` |
+| Gris oscuro (UI)       | `#1E293B` |
+| Acento cyan (opcional) | `#22D3EE` |
