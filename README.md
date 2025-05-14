@@ -2,6 +2,8 @@
 
 Este proyecto es un blog desarrollado en **React** usando **Vite** como bundler y con entradas escritas en archivos **Markdown** (`.md`). Es un enfoque estático, ideal para comenzar con un sistema de blog simple, rápido y escalable.
 
+Nombre de dominio propuesta: `juancatech.dev`
+
 ---
 
 ## 🚀 Stack Tecnológico
