@@ -6,12 +6,12 @@ export const BlogAppRouter = () => {
     return (
         <>
             <Navbar />
-            <main className="p-4 max-w-4xl mx-auto">
+            <main className="p-4">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/posts/:slug" element={<h1>Posts</h1>} />
-                    <Route path="/about" element={<h1>About</h1>} />
-                    <Route path="*" element={<h1>404</h1>} />
+                    <Route path="/posts/:slug" element={<h1 className="max-w-4xl mx-auto">Posts</h1>} />
+                    <Route path="/about" element={<h1 className="max-w-4xl mx-auto">About</h1>} />
+                    <Route path="*" element={<h1 className="max-w-4xl mx-auto">404 - Página no encontrada</h1>} />
                 </Routes>
             </main>
         </>
