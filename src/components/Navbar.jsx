@@ -13,12 +13,28 @@ export const Navbar = () => {
             </NavLink>
 
             <NavLink
+                to="/projects"
+                className={({ isActive }) =>
+                    isActive ? "text-blue-600 font-semibold" : "text-gray-800"
+                }
+            >
+                Proyectos
+            </NavLink>
+            <NavLink
                 to="/about"
                 className={({ isActive }) =>
                     isActive ? "text-blue-600 font-semibold" : "text-gray-800"
                 }
             >
-                Acerca de
+                Sobre mi
+            </NavLink>
+            <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                    isActive ? "text-blue-600 font-semibold" : "text-gray-800"
+                }
+            >
+                Contacto
             </NavLink>
         </nav>
     );
