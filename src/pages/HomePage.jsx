@@ -1,115 +1,50 @@
-import { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { Hero } from "../components/Hero";
+import { LatestPosts } from "../components/LatestPosts";
+import { Categories } from "../components/Categories";
+import { FeaturedProjects } from "../components/FeaturedProjects";
+import { AboutMe } from "../components/AboutMe";
+import { NewsletterSignup } from "../components/NewsletterSignup";
+import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
-    const [isFormVisible, setIsFormVisible] = useState(false);
-
-    // Toggle para mostrar u ocultar el formulario
-    const toggleForm = () => {
-        setIsFormVisible(!isFormVisible);
-    };
-
-    // Esquema de validación con Yup
-    const validationSchema = Yup.object({
-        title: Yup.string()
-            .min(5, "El título debe tener al menos 5 caracteres")
-            .required("El título es obligatorio"),
-        content: Yup.string()
-            .min(20, "El contenido debe tener al menos 20 caracteres")
-            .required("El contenido es obligatorio"),
-    });
-
     return (
-        <section className="p-4">
-            <h1 className="text-2xl font-bold">Bienvenido a mi blog</h1>
-            {/* Utiliza el helper loadPosts para cargar las entradas aquí */}
-            <p className="mt-4">
-                Aquí encontrarás una variedad de artículos sobre diferentes temas.
-            </p>
-            <p className="mt-2">Explora y disfruta de la lectura.</p>
+        <section className="bg-[#F9FAFB] min-h-screen py-8">
+            <div className="max-w-4xl mx-auto px-4">
+                <header className="mb-10">
+                    <h1 className="text-4xl font-bold text-[#1E1E2F] mb-2">
+                        Bienvenido a mi blog personal
+                    </h1>
+                    <p className="text-lg text-[#4B5563]">
+                        Aquí comparto pensamientos, guías y experiencias sobre tecnología y desarrollo web.
+                    </p>
+                </header>
 
-            {/* Botón para mostrar el formulario */}
-            <button
-                onClick={toggleForm}
-                className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Agregar nuevo post
-            </button>
+                <section className="space-y-6">
+                    <article className="border border-[#E5E7EB] p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <h2 className="text-2xl font-semibold text-[#1E3A8A] hover:text-[#3B82F6] cursor-pointer">
+                            Cómo construir una app moderna con React y Firebase
+                        </h2>
+                        <p className="text-[#4B5563] mt-2">
+                            Un paso a paso para crear una aplicación moderna utilizando React, Firebase y Tailwind CSS.
+                        </p>
+                        <p className="mt-2 text-sm text-[#10B981] font-medium">
+                            Guía práctica
+                        </p>
+                    </article>
 
-            {/* Formulario visible solo cuando se hace clic */}
-            {isFormVisible && (
-                <div className="mt-6 p-6 border rounded shadow-lg bg-white">
-                    <h2 className="text-xl font-semibold mb-4">Crear un nuevo post</h2>
-
-                    <Formik
-                        initialValues={{
-                            title: "",
-                            content: "",
-                        }}
-                        validationSchema={validationSchema}
-                        onSubmit={(values) => {
-                            // Aquí iría la lógica para enviar el nuevo post
-                            console.log("Nuevo post:", values);
-                            toggleForm(); // Cerrar el formulario al enviarlo
-                        }}
-                    >
-                        {() => (
-                            <Form>
-                                <div className="mb-4">
-                                    <label
-                                        htmlFor="title"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Título
-                                    </label>
-                                    <Field
-                                        id="title"
-                                        name="title"
-                                        type="text"
-                                        className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-                                    />
-                                    <ErrorMessage
-                                        name="title"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-
-                                <div className="mb-4">
-                                    <label
-                                        htmlFor="content"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Contenido
-                                    </label>
-                                    <Field
-                                        id="content"
-                                        name="content"
-                                        as="textarea"
-                                        rows="4"
-                                        className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-                                    />
-                                    <ErrorMessage
-                                        name="content"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-
-                                <div className="flex justify-end">
-                                    <button
-                                        type="submit"
-                                        className="p-2 bg-green-500 text-white rounded hover:bg-green-600"
-                                    >
-                                        Crear post
-                                    </button>
-                                </div>
-                            </Form>
-                        )}
-                    </Formik>
-                </div>
-            )}
+                    <article className="border border-[#E5E7EB] p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <h2 className="text-2xl font-semibold text-[#1E3A8A] hover:text-[#3B82F6] cursor-pointer">
+                            Mejores prácticas para organizar proyectos en Vite
+                        </h2>
+                        <p className="text-[#4B5563] mt-2">
+                            Aprende cómo mantener tu código limpio y estructurado cuando trabajas con Vite y React.
+                        </p>
+                        <p className="mt-2 text-sm text-[#10B981] font-medium">
+                            Tips de productividad
+                        </p>
+                    </article>
+                </section>
+            </div>
         </section>
     );
 };
