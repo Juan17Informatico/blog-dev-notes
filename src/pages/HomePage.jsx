@@ -5,19 +5,13 @@ import { FeaturedProjects } from "../components/FeaturedProjects";
 import { AboutMe } from "../components/AboutMe";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { Footer } from "../components/Footer";
+import { Banner } from "../components/Banner";
 
 export const HomePage = () => {
     return (
         <section className="bg-[#F9FAFB] min-h-screen py-8">
             <div className="max-w-4xl mx-auto px-4">
-                <header className="mb-10">
-                    <h1 className="text-4xl font-bold text-[#1E1E2F] mb-2">
-                        Bienvenido a mi blog personal
-                    </h1>
-                    <p className="text-lg text-[#4B5563]">
-                        Aquí comparto pensamientos, guías y experiencias sobre tecnología y desarrollo web.
-                    </p>
-                </header>
+                <Banner />
 
                 <section className="space-y-6">
                     <article className="border border-[#E5E7EB] p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
