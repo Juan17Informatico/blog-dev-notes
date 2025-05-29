@@ -143,6 +143,9 @@ export const HomePage = () => {
                     </div>
                 </div>
             </section>
+            
+            <Categories />
+            
         </div>
     );
 };
