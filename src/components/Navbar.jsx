@@ -52,9 +52,6 @@ export const Navbar = () => {
                         <NavLink to="/about" className={getLinkClass}>
                             Sobre mí
                         </NavLink>
-                        <NavLink to="/contact" className={getLinkClass}>
-                            Contacto
-                        </NavLink>
                     </div>
 
                     {/* Mobile menu button */}
@@ -81,9 +78,6 @@ export const Navbar = () => {
                         </NavLink>
                         <NavLink to="/about" className={getLinkClass}>
                             Sobre mí
-                        </NavLink>
-                        <NavLink to="/contact" className={getLinkClass}>
-                            Contacto
                         </NavLink>
                     </div>
                 </div>
