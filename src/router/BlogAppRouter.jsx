@@ -7,9 +7,9 @@ import { Post } from "../components/Post";
 
 export const BlogAppRouter = () => {
     return (
-        <>
+        <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="p-4">
+            <main className="flex-1">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutMe />} />
@@ -18,6 +18,6 @@ export const BlogAppRouter = () => {
                 </Routes>
             </main>
             <Footer />
-        </>
+        </div>
     );
 };
