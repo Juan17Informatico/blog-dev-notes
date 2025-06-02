@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-700 py-10 px-4">
+    <footer className="bg-gray-100 text-gray-700 py-10 px-4 mt-auto">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Redes sociales */}
         <div className="flex space-x-6">
