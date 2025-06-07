@@ -46,9 +46,9 @@ export const Navbar = () => {
                         <NavLink to="/" className={getLinkClass}>
                             Inicio
                         </NavLink>
-                        <NavLink to="/projects" className={getLinkClass}>
+                        <a href="https://www.juancatech.dev" className={getLinkClass} target="_blank" rel="noopener noreferrer">
                             Proyectos
-                        </NavLink>
+                        </a>
                         <NavLink to="/about" className={getLinkClass}>
                             Sobre mí
                         </NavLink>
