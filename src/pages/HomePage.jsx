@@ -1,6 +1,6 @@
 import { Categories } from "../components/Categories";
 import { Banner } from "../components/Banner";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronRight, Link, Mail, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { loadAllPosts } from "../helpers/loadPosts";
@@ -9,10 +9,13 @@ import { NavLink } from "react-router-dom";
 export const HomePage = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const [articles, setArticles] = useState([]);
-    
+    const hasLoaded = useRef(false);
 
     useEffect(() => {
-        loadAllPosts().then(setArticles).catch(console.error);
+        if(!hasLoaded.current){
+            hasLoaded.current = true;
+            loadAllPosts().then(setArticles).catch(console.error);
+        }
     }, []);
 
     const fadeInUp = {
