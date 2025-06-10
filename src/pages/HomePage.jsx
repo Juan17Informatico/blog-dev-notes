@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 export const HomePage = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const [articles, setArticles] = useState([]);
-    console.log({ articles });
+    
 
     useEffect(() => {
         loadAllPosts().then(setArticles).catch(console.error);
