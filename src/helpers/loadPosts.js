@@ -1,20 +1,41 @@
-export const loadPosts = async () => {
-    const files = import.meta.glob("../posts/*.md", { as: "raw" });
+import fm from 'front-matter';
 
-    const posts = [];
+const files = import.meta.glob('../posts/*.md', {
+    query: '?raw',
+    import: 'default'
+});
 
-    for (const path in files) {
-        const slug = path.split("/").pop().replace(".md", "");
-        const rawContent = await files[path]();
-        const { data, content } = matter(rawContent);
+export const loadPost = async (slug) => {
+    const content = await import(`../posts/${slug}.md?raw`);
+    const { attributes, body } = fm(content.default);
 
-        posts.push({
-            slug,
-            content,
-            ...data, // title, date, tags
-        });
-    }
+    return {
+        ...attributes,
+        slug,
+        content: body,
+    };
+};
 
-    // Ordenamos por fecha descendente
-    return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+export const loadAllPosts = async () => {
+    const files = import.meta.glob('../posts/*.md', {
+        query: '?raw',
+        import: 'default',
+    });
+
+    const posts = await Promise.all(
+        Object.entries(files).map(async ([path, resolver]) => {
+            const rawContent = await resolver();
+            const { attributes, body } = fm(rawContent);
+
+            return {
+                ...attributes,
+                content: body,
+                slug: path.split('/').pop().replace('.md', ''),
+                id: crypto.randomUUID(),
+            };
+        })
+    );
+
+    return posts;
 };
