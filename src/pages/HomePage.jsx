@@ -1,51 +1,19 @@
-import { Hero } from "../components/Hero";
-import { LatestPosts } from "../components/LatestPosts";
 import { Categories } from "../components/Categories";
-import { FeaturedProjects } from "../components/FeaturedProjects";
-import { AboutMe } from "../components/AboutMe";
-import { NewsletterSignup } from "../components/NewsletterSignup";
-import { Footer } from "../components/Footer";
 import { Banner } from "../components/Banner";
-import { useState } from "react";
-import { Navbar } from "../components/Navbar";
-import { ChevronRight, Mail, Users } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronRight, Link, Mail, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import { loadAllPosts } from "../helpers/loadPosts";
+import { NavLink } from "react-router-dom";
 
 export const HomePage = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
+    const [articles, setArticles] = useState([]);
+    console.log({ articles });
 
-    const articles = [
-        {
-            id: 1,
-            title: "Cómo construir una app moderna con React y Firebase",
-            description:
-                "Un paso a paso completo para crear aplicaciones escalables utilizando React, Firebase y las mejores prácticas de desarrollo moderno.",
-            category: "Guía práctica",
-            categoryColor: "bg-emerald-100 text-emerald-700",
-            readTime: "12 min",
-            difficulty: "Intermedio",
-        },
-        {
-            id: 2,
-            title: "Mejores prácticas para organizar proyectos en Vite",
-            description:
-                "Aprende cómo mantener tu código limpio, escalable y estructurado cuando trabajas con Vite y React en proyectos empresariales.",
-            category: "Tips de productividad",
-            categoryColor: "bg-blue-100 text-blue-700",
-            readTime: "8 min",
-            difficulty: "Principiante",
-        },
-        {
-            id: 3,
-            title: "Inteligencia Artificial en el desarrollo web moderno",
-            description:
-                "Explora cómo la IA está transformando el desarrollo web y qué herramientas puedes implementar en tus proyectos hoy.",
-            category: "Tendencias",
-            categoryColor: "bg-purple-100 text-purple-700",
-            readTime: "15 min",
-            difficulty: "Avanzado",
-        },
-    ];
+    useEffect(() => {
+        loadAllPosts().then(setArticles).catch(console.error);
+    }, []);
 
     const fadeInUp = {
         hidden: { opacity: 0, y: 30 },
@@ -62,7 +30,7 @@ export const HomePage = () => {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{once: true}}
+                    viewport={{ once: true }}
                     variants={fadeInUp}
                 >
                     <Banner />
@@ -135,16 +103,17 @@ export const HomePage = () => {
 
                                         {/* Call to action */}
                                         <div className="flex items-center justify-between">
-                                            <button className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                                            <NavLink
+                                                to={`/post/${article.slug}`}
+                                                className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
                                                 Leer más
                                                 <ChevronRight
-                                                    className={`w-4 h-4 ml-1 transition-transform duration-300 ${
-                                                        hoveredCard === article.id
-                                                            ? "translate-x-1"
-                                                            : ""
-                                                    }`}
+                                                    className={`w-4 h-4 ml-1 transition-transform duration-300 ${hoveredCard === article.id
+                                                        ? "translate-x-1"
+                                                        : ""
+                                                        }`}
                                                 />
-                                            </button>
+                                            </NavLink>
 
                                             <div className="flex space-x-2">
                                                 <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
