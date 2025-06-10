@@ -3,15 +3,29 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
+import { loadPost } from "../helpers/loadPosts";
+import rehypeRaw from "rehype-raw";
+
 
 export const Post = () => {
   const { post: slug } = useParams();
   const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true); // <--- ahora sí existe
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    loadPost(slug).then(setPost).catch(console.error);
+    setLoading(true);
+    setError(null);
+    loadPost(slug)
+      .then((data) => {
+        setPost(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+        setLoading(false);
+      });
   }, [slug]);
 
   if (loading) return <div className="p-4">Cargando...</div>;
@@ -25,7 +39,7 @@ export const Post = () => {
         {post.category} • {post.readTime} • {post.difficulty}
       </p>
       <hr className="my-4 border-gray-300 dark:border-gray-600" />
-      <div className="prose prose-lg dark:prose-invert">
+      <div className="prose prose-lg max-w-none">
         <ReactMarkdown
           rehypePlugins={[rehypeRaw, rehypeHighlight]}
           remarkPlugins={[remarkGfm]}
@@ -35,4 +49,4 @@ export const Post = () => {
       </div>
     </div>
   );
-}
+};
