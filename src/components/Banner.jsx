@@ -96,29 +96,11 @@ export const Banner = () => {
                             <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50">
                                 <div className="aspect-video bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-                                    <div className="grid grid-cols-3 gap-4 p-8">
-                                        <div className="h-20 bg-blue-200 rounded-xl animate-pulse" />
-                                        <div
-                                            className="h-20 bg-purple-200 rounded-xl animate-pulse"
-                                            style={{ animationDelay: "0.5s" }}
-                                        />
-                                        <div
-                                            className="h-20 bg-indigo-200 rounded-xl animate-pulse"
-                                            style={{ animationDelay: "1s" }}
-                                        />
-                                        <div
-                                            className="h-20 bg-pink-200 rounded-xl animate-pulse"
-                                            style={{ animationDelay: "1.5s" }}
-                                        />
-                                        <div
-                                            className="h-20 bg-cyan-200 rounded-xl animate-pulse"
-                                            style={{ animationDelay: "2s" }}
-                                        />
-                                        <div
-                                            className="h-20 bg-emerald-200 rounded-xl animate-pulse"
-                                            style={{ animationDelay: "2.5s" }}
-                                        />
-                                    </div>
+                                    <img
+                                        src="/img/banner.webp"
+                                        alt="Portada"
+                                        className="w-full h-full object-cover aspect-video"
+                                    />
                                 </div>
                             </div>
                         </div>
