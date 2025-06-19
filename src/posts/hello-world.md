@@ -1,5 +1,5 @@
 ---
-title: "Hola Mundo"
+title: "Hola Mundoa"
 date: "2024-05-01"
 tags: ["introducción", "bienvenida"]
 ---

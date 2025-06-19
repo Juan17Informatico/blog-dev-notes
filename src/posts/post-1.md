@@ -8,7 +8,7 @@ readTime: "12 min"
 difficulty: "Intermedio"
 ---
 
-# Construye una Aplicación Web Moderna con React y Firebase: Guía Completa
+# Construyea una Aplicación Web Moderna con React y Firebase: Guía Completa
 
 -----
 
