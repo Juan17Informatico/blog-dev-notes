@@ -32,11 +32,13 @@ export const Post = () => {
   if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
   if (!post) return <div className="p-4">Post no encontrado</div>;
 
+  const { title, description, category, categoryColor, readTime, difficulty, content } = post;
+
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+      <h1 className="text-3xl font-bold mb-2">{title}</h1>
       <p className="text-sm text-gray-500 mb-1">
-        {post.category} • {post.readTime} • {post.difficulty}
+        {category} • {readTime} • {difficulty}
       </p>
       <hr className="my-4 border-gray-300 dark:border-gray-600" />
       <div className="prose prose-lg max-w-none">
@@ -44,7 +46,7 @@ export const Post = () => {
           rehypePlugins={[rehypeRaw, rehypeHighlight]}
           remarkPlugins={[remarkGfm]}
         >
-          {post.content}
+          {content}
         </ReactMarkdown>
       </div>
     </div>
