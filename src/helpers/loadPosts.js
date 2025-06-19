@@ -6,7 +6,7 @@ const files = import.meta.glob('../posts/*.md', {
 });
 
 export const loadPost = async (slug) => {
-    const filePath = `../posts/${slug}.md`;
+    const filePath = `/src/posts/${slug}.md`;
 
     try {
         const res = await fetch(filePath);
