@@ -32,7 +32,7 @@ export const HomePage = () => {
             <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30">
                 <motion.div
                     initial="hidden"
-                    whileInView="visible"
+                    animate="visible"
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
@@ -43,7 +43,7 @@ export const HomePage = () => {
                 <motion.section
                     className="py-16 px-4"
                     initial="hidden"
-                    whileInView="visible"
+                    animate="visible"
                     viewport={{ once: true }}
                     variants={fadeInUp}
                 >
