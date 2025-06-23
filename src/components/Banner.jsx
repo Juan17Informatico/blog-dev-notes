@@ -97,7 +97,7 @@ export const Banner = () => {
                             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50">
                                 <div className="aspect-video bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
                                     <img
-                                        src="/img/banner.webp"
+                                        src="/blog-dev-notes/img/banner.webp"
                                         alt="Portada"
                                         className="w-full h-full object-cover aspect-video"
                                     />
