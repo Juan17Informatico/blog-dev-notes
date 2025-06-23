@@ -3,7 +3,7 @@ import { BlogAppRouter } from "./router/BlogAppRouter";
 
 export const BlogApp = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/blog-dev-notes">
             <BlogAppRouter />
         </BrowserRouter>
     );
