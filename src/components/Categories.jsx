@@ -7,23 +7,47 @@ import {
   BookOpenCheck,
 } from "lucide-react";
 
-export const Categories = () => {
-  const categoryList = [
-    { name: "Web Dev", icon: Code, color: "bg-blue-100 text-blue-700" },
-    { name: "IA y Robots", icon: Bot, color: "bg-purple-100 text-purple-700" },
-    { name: "Juegos", icon: Gamepad2, color: "bg-green-100 text-green-700" },
-    { name: "Cultura Tech", icon: Cpu, color: "bg-yellow-100 text-yellow-700" },
-    { name: "Proyectos", icon: FolderKanban, color: "bg-pink-100 text-pink-700" },
-    { name: "Tutoriales", icon: BookOpenCheck, color: "bg-violet-100 text-violet-700" },
-  ];
+const categoryList = [
+  {
+    name: "Web Dev",
+    icon: Code,
+    color: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+  },
+  {
+    name: "IA y Robots",
+    icon: Bot,
+    color: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
+  },
+  {
+    name: "Juegos",
+    icon: Gamepad2,
+    color: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+  },
+  {
+    name: "Cultura Tech",
+    icon: Cpu,
+    color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
+  },
+  {
+    name: "Proyectos",
+    icon: FolderKanban,
+    color: "bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300",
+  },
+  {
+    name: "Tutoriales",
+    icon: BookOpenCheck,
+    color: "bg-violet-100 text-violet-700 dark:bg-violet-900 dark:text-violet-300",
+  },
+];
 
+export const Categories = () => {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-500">
       <div className="max-w-6xl mx-auto text-center">
-        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-800 rounded-full text-sm font-medium mb-4">
+        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-pink-100 text-yellow-800 rounded-full text-sm font-medium mb-4 dark:from-yellow-900 dark:to-pink-900 dark:text-yellow-300">
           Explora por temática
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 dark:text-white">
           Categorías
         </h2>
 

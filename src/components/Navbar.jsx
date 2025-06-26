@@ -26,16 +26,16 @@ export const Navbar = () => {
     };
 
     const linkClass =
-        "px-3 py-2 rounded-xl font-medium transition-colors duration-300 hover:text-blue-600";
-    const activeClass = "text-blue-600";
+        "px-3 py-2 rounded-xl font-medium transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400";
+    const activeClass = "text-blue-600 dark:text-blue-400";
 
     const getLinkClass = ({ isActive }) =>
-        `${linkClass} ${isActive ? activeClass : "text-gray-700"}`;
+        `${linkClass} ${isActive ? activeClass : "text-gray-700 dark:text-gray-300"}`;
 
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-xl"
+                ? "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-xl dark:bg-gray-900/80 dark:border-gray-700/50"
                 : "bg-transparent"
                 }`}
         >
@@ -46,7 +46,7 @@ export const Navbar = () => {
                         <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                             <Code className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                        <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-300 dark:to-gray-400">
                             JuanCaTech
                         </span>
                     </div>
@@ -56,7 +56,12 @@ export const Navbar = () => {
                         <NavLink to="/" className={getLinkClass}>
                             Inicio
                         </NavLink>
-                        <a href="https://www.juancatech.dev" className="text-gray-700" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href="https://www.juancatech.dev"
+                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             Proyectos
                         </a>
                         <NavLink to="/about" className={getLinkClass}>
@@ -68,13 +73,13 @@ export const Navbar = () => {
                             onClick={handleToggleDarkMode}
                             className="ml-4 p-2 rounded-xl transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
-                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800" />}
+                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800 dark:text-gray-200" />}
                         </button>
                     </div>
 
                     {/* Mobile menu button */}
                     <button
-                        className="md:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+                        className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -85,7 +90,7 @@ export const Navbar = () => {
                 <div
                     className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}
                 >
-                    <div className="py-4 space-y-2 bg-white/90 backdrop-blur-xl rounded-2xl mx-4 mb-4 shadow-xl border border-gray-200/50">
+                    <div className="py-4 space-y-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-2xl mx-4 mb-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
                         <NavLink to="/" className={getLinkClass}>
                             Inicio
                         </NavLink>
@@ -101,7 +106,7 @@ export const Navbar = () => {
                             onClick={handleToggleDarkMode}
                             className="w-full flex justify-center p-2 rounded-xl transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
-                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800" />}
+                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800 dark:text-gray-200" />}
                         </button>
                     </div>
                 </div>
