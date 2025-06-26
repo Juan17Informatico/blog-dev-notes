@@ -1,4 +1,4 @@
-import { Code, Menu, X } from "lucide-react";
+import { Code, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { toggleDarkMode } from "../helpers/toggleDarkMode";
@@ -6,14 +6,24 @@ import { toggleDarkMode } from "../helpers/toggleDarkMode";
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
+
+        const currentTheme = document.documentElement.classList.contains('dark');
+        setIsDark(currentTheme);
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleToggleDarkMode = () => {
+        toggleDarkMode();
+        setIsDark(!isDark);
+    };
 
     const linkClass =
         "px-3 py-2 rounded-xl font-medium transition-colors duration-300 hover:text-blue-600";
@@ -53,11 +63,12 @@ export const Navbar = () => {
                             Sobre mí
                         </NavLink>
 
+                        {/* Botón de Dark Mode */}
                         <button
-                            onClick={toggleDarkMode}
-                            className="ml-4 px-3 py-2 rounded-xl font-medium transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                            onClick={handleToggleDarkMode}
+                            className="ml-4 p-2 rounded-xl transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
-                            Cambiar tema
+                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800" />}
                         </button>
                     </div>
 
@@ -72,8 +83,7 @@ export const Navbar = () => {
 
                 {/* Mobile Navigation */}
                 <div
-                    className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-                        }`}
+                    className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}
                 >
                     <div className="py-4 space-y-2 bg-white/90 backdrop-blur-xl rounded-2xl mx-4 mb-4 shadow-xl border border-gray-200/50">
                         <NavLink to="/" className={getLinkClass}>
@@ -86,11 +96,12 @@ export const Navbar = () => {
                             Sobre mí
                         </NavLink>
 
+                        {/* Botón Dark Mode Mobile */}
                         <button
-                            onClick={toggleDarkMode}
-                            className="w-full px-3 py-2 rounded-xl font-medium transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                            onClick={handleToggleDarkMode}
+                            className="w-full flex justify-center p-2 rounded-xl transition-colors duration-300 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
-                            Cambiar tema
+                            {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-800" />}
                         </button>
                     </div>
                 </div>
