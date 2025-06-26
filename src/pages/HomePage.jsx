@@ -12,7 +12,7 @@ export const HomePage = () => {
     const hasLoaded = useRef(false);
 
     useEffect(() => {
-        if(!hasLoaded.current){
+        if (!hasLoaded.current) {
             hasLoaded.current = true;
             loadAllPosts().then(setArticles).catch(console.error);
         }
@@ -29,7 +29,7 @@ export const HomePage = () => {
 
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30">
+            <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 <motion.div
                     initial="hidden"
                     animate="visible"
@@ -50,13 +50,13 @@ export const HomePage = () => {
                     <div className="max-w-6xl mx-auto">
                         {/* Header de sección */}
                         <motion.div className="text-center mb-16" variants={fadeInUp} custom={0}>
-                            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+                            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-4 dark:from-blue-900 dark:to-purple-900 dark:text-blue-300">
                                 Últimos artículos
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
                                 Contenido destacado
                             </h2>
-                            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            <p className="text-xl text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
                                 Artículos cuidadosamente seleccionados sobre las últimas tendencias
                                 en tecnología
                             </p>
@@ -67,7 +67,7 @@ export const HomePage = () => {
                             {articles.map((article, i) => (
                                 <motion.article
                                     key={article.id}
-                                    className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200"
+                                    className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-500"
                                     onMouseEnter={() => setHoveredCard(article.id)}
                                     onMouseLeave={() => setHoveredCard(null)}
                                     initial="hidden"
@@ -87,7 +87,7 @@ export const HomePage = () => {
                                             >
                                                 {article.category}
                                             </span>
-                                            <div className="flex items-center space-x-2 text-xs text-gray-500">
+                                            <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
                                                 <span>{article.readTime}</span>
                                                 <span>•</span>
                                                 <span>{article.difficulty}</span>
@@ -95,12 +95,12 @@ export const HomePage = () => {
                                         </div>
 
                                         {/* Título */}
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 dark:text-white dark:group-hover:text-blue-400">
                                             {article.title}
                                         </h3>
 
                                         {/* Descripción */}
-                                        <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
+                                        <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed dark:text-gray-300">
                                             {article.description}
                                         </p>
 
@@ -108,7 +108,8 @@ export const HomePage = () => {
                                         <div className="flex items-center justify-between">
                                             <NavLink
                                                 to={`/post/${article.slug}`}
-                                                className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                                                className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors dark:text-blue-400 dark:group-hover:text-blue-300"
+                                            >
                                                 Leer más
                                                 <ChevronRight
                                                     className={`w-4 h-4 ml-1 transition-transform duration-300 ${hoveredCard === article.id
@@ -119,11 +120,11 @@ export const HomePage = () => {
                                             </NavLink>
 
                                             <div className="flex space-x-2">
-                                                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                                                    <Users className="w-4 h-4 text-gray-400" />
+                                                <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                    <Users className="w-4 h-4 text-gray-400 dark:text-gray-300" />
                                                 </button>
-                                                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                                                    <Mail className="w-4 h-4 text-gray-400" />
+                                                <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                    <Mail className="w-4 h-4 text-gray-400 dark:text-gray-300" />
                                                 </button>
                                             </div>
                                         </div>
@@ -141,7 +142,7 @@ export const HomePage = () => {
                             variants={fadeInUp}
                             custom={articles.length + 1}
                         >
-                            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 dark:from-blue-500 dark:to-purple-500">
                                 Ver todos los artículos
                             </button>
                         </motion.div>
