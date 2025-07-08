@@ -1,5 +1,5 @@
 import { Code, Sparkles, User } from "lucide-react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -8,7 +8,7 @@ const fadeInUp = {
 
 export const AboutMe = () => {
     return (
-        <section className="py-20 px-4 bg-gradient-to-b from-blue-50/20 via-white to-purple-50/20">
+        <section className="py-20 px-4 bg-gradient-to-b from-blue-50/20 via-white to-purple-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             <div className="max-w-4xl mx-auto text-center">
                 {/* Encabezado */}
                 <motion.div
@@ -17,13 +17,13 @@ export const AboutMe = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                 >
-                    <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                    <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-6 dark:from-blue-900 dark:to-purple-900 dark:text-blue-300">
                         Sobre mí
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
                         Conoce al desarrollador detrás del blog
                     </h2>
-                    <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto dark:text-gray-300">
                         Este es mi espacio personal donde comparto lo que aprendo y construyo como
                         desarrollador frontend. Trabajo principalmente con <strong>React</strong>,{" "}
                         <strong>Vite</strong> y <strong>TailwindCSS</strong>, pero también tengo
@@ -42,11 +42,13 @@ export const AboutMe = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all"
+                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:shadow-lg"
                     >
-                        <User className="text-blue-600 w-8 h-8 mb-4" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">¿Quién soy?</h3>
-                        <p className="text-gray-600">
+                        <User className="text-blue-600 dark:text-blue-400 w-8 h-8 mb-4" />
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2 dark:text-white">
+                            ¿Quién soy?
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300">
                             Soy un desarrollador de software autodidacta con una profunda pasión por
                             la creación de sistemas útiles, funcionales y bien diseñados. Me impulsa
                             una constante necesidad de aprender y mejorar cada día, tanto en el
@@ -61,13 +63,13 @@ export const AboutMe = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all"
+                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:shadow-lg"
                     >
-                        <Code className="text-purple-600 w-8 h-8 mb-4" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <Code className="text-purple-600 dark:text-purple-400 w-8 h-8 mb-4" />
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2 dark:text-white">
                             Stack principal
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-gray-300">
                             Actualmente trabajo con <strong>React</strong>, <strong>Vite</strong>,{" "}
                             <strong>TailwindCSS</strong>, y en backend utilizo{" "}
                             <strong>Node.js</strong> con <strong>Express</strong>,{" "}
@@ -85,13 +87,13 @@ export const AboutMe = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all"
+                        className="bg-white border border-gray-100 rounded-3xl p-6 shadow hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:shadow-lg"
                     >
-                        <Sparkles className="text-pink-600 w-8 h-8 mb-4" />
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <Sparkles className="text-pink-600 dark:text-pink-400 w-8 h-8 mb-4" />
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2 dark:text-white">
                             ¿Por qué este blog?
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-gray-300">
                             Porque creo firmemente que compartir el proceso de aprendizaje fortalece
                             el crecimiento. Aquí encontrarás guías, notas técnicas, reflexiones y
                             experimentos sobre desarrollo de software, inteligencia artificial,
