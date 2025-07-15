@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import { AboutMe } from "../components/AboutMe";
 import { Footer } from "../components/Footer";
 import { Post } from "../components/Post";
+import { CategoryPage } from "../pages/CategoryPage";
 
 export const BlogAppRouter = () => {
     return (
@@ -13,6 +14,7 @@ export const BlogAppRouter = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutMe />} />
+                    <Route path="/categories" element={<CategoryPage />} />
                     <Route path="/post/:post" element={<Post />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
