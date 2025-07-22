@@ -6,41 +6,53 @@ import {
   FolderKanban,
   BookOpenCheck,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { getAllCategories } from "../helpers/getAllCategories";
 
-const categoryList = [
-  {
-    name: "Web Dev",
-    icon: Code,
-    color: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
-  },
-  {
-    name: "IA y Robots",
-    icon: Bot,
-    color: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-  },
-  {
-    name: "Juegos",
-    icon: Gamepad2,
-    color: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
-  },
-  {
-    name: "Cultura Tech",
-    icon: Cpu,
-    color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
-  },
-  {
-    name: "Proyectos",
-    icon: FolderKanban,
-    color: "bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300",
-  },
-  {
-    name: "Tutoriales",
-    icon: BookOpenCheck,
-    color: "bg-violet-100 text-violet-700 dark:bg-violet-900 dark:text-violet-300",
-  },
-];
+// const categoryList = [
+//   {
+//     name: "Frontend",
+//     icon: Code,
+//     color: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+//   },
+//   {
+//     name: "Inteligencia Artificial",
+//     icon: Bot,
+//     color: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
+//   },
+//   {
+//     name: "Backend",
+//     icon: Gamepad2,
+//     color: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+//   },
+//   {
+//     name: "Cultura Tech",
+//     icon: Cpu,
+//     color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
+//   },
+//   {
+//     name: "Proyectos",
+//     icon: FolderKanban,
+//     color: "bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300",
+//   },
+//   {
+//     name: "Tutoriales",
+//     icon: BookOpenCheck,
+//     color: "bg-violet-100 text-violet-700 dark:bg-violet-900 dark:text-violet-300",
+//   },
+// ];
 
 export const Categories = () => {
+
+  const [categories, setCategories] = useState([]);
+  const color = useRef("bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300");
+
+  useEffect(() => {
+    getAllCategories().then(setCategories);
+
+  }, []);
+
   return (
     <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-500">
       <div className="max-w-6xl mx-auto text-center">
@@ -52,16 +64,19 @@ export const Categories = () => {
         </h2>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {categoryList.map((cat, index) => {
-            const Icon = cat.icon;
+          {categories.map((cat, index) => {
+            console.log({ categories });
+
+            const Icon = cat?.icon;
             return (
-              <button
+              <NavLink
                 key={index}
-                className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 ${cat.color} hover:scale-105`}
+                to={`/categories/${cat}`}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 ${color.current} hover:scale-105`}
               >
-                <Icon className="w-4 h-4" />
-                {cat.name}
-              </button>
+                {Icon && (<Icon className="w-4 h-4" />)}
+                {cat}
+              </NavLink>
             );
           })}
         </div>
