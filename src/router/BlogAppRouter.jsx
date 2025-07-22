@@ -14,7 +14,7 @@ export const BlogAppRouter = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutMe />} />
-                    <Route path="/categories" element={<CategoryPage />} />
+                    <Route path="/categories/:category" element={<CategoryPage />} />
                     <Route path="/post/:post" element={<Post />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
