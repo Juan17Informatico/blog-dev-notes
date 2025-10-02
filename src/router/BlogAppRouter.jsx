@@ -5,8 +5,12 @@ import { AboutMe } from "../components/AboutMe";
 import { Footer } from "../components/Footer";
 import { Post } from "../components/Post";
 import { CategoryPage } from "../pages/CategoryPage";
+import { getEnvVariables } from "../helpers/getEnvVariables";
 
 export const BlogAppRouter = () => {
+
+    const { VITE_ADMIN_PATH } = getEnvVariables();
+
     return (
         <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             <Navbar />
@@ -16,6 +20,7 @@ export const BlogAppRouter = () => {
                     <Route path="/about" element={<AboutMe />} />
                     <Route path="/categories/:category" element={<CategoryPage />} />
                     <Route path="/post/:post" element={<Post />} />
+                    <Route path={`/${VITE_ADMIN_PATH}/*`} element={<h1>Ruta admin</h1>} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </main>
