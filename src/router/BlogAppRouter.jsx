@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { Post } from "../components/Post";
 import { CategoryPage } from "../pages/CategoryPage";
 import { getEnvVariables } from "../helpers/getEnvVariables";
+import { AdminRouter } from "../admin/routes/AdminRouter";
 
 export const BlogAppRouter = () => {
 
@@ -20,7 +21,7 @@ export const BlogAppRouter = () => {
                     <Route path="/about" element={<AboutMe />} />
                     <Route path="/categories/:category" element={<CategoryPage />} />
                     <Route path="/post/:post" element={<Post />} />
-                    <Route path={`/${VITE_ADMIN_PATH}/*`} element={<h1>Ruta admin</h1>} />
+                    <Route path={`/${VITE_ADMIN_PATH}/*`} element={<AdminRouter />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </main>
