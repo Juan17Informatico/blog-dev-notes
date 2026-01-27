@@ -1,22 +1,18 @@
 import { Categories } from "../components/Categories";
 import { Banner } from "../components/Banner";
-import { useEffect, useRef, useState } from "react";
-import { ChevronRight, Link, Mail, Users } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronRight, Mail, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import { loadAllPosts } from "../helpers/loadPosts";
 import { NavLink } from "react-router-dom";
+import { usePosts } from "../hooks/useApi";
 
 export const HomePage = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
-    const [articles, setArticles] = useState([]);
-    const hasLoaded = useRef(false);
+    const { posts, loading, error, loadPosts } = usePosts();
 
     useEffect(() => {
-        if (!hasLoaded.current) {
-            hasLoaded.current = true;
-            loadAllPosts().then(setArticles).catch(console.error);
-        }
-    }, []);
+        loadPosts();
+    }, [loadPosts]);
 
     const fadeInUp = {
         hidden: { opacity: 0, y: 30 },
@@ -64,29 +60,48 @@ export const HomePage = () => {
 
                         {/* Grid de artículos */}
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {articles.map((article, i) => (
-                                <motion.article
-                                    key={article.id}
-                                    className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-500"
-                                    onMouseEnter={() => setHoveredCard(article.id)}
-                                    onMouseLeave={() => setHoveredCard(null)}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true }}
-                                    variants={fadeInUp}
-                                    custom={i + 1}
-                                >
-                                    {/* Gradiente decorativo */}
-                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
+                            {loading ? (
+                                <div className="col-span-full text-center py-8">
+                                    <p className="text-gray-500 dark:text-gray-400">Cargando artículos...</p>
+                                </div>
+                            ) : error ? (
+                                <div className="col-span-full text-center py-8">
+                                    <p className="text-red-500 dark:text-red-400">Error: {error}</p>
+                                </div>
+                            ) : posts.length === 0 ? (
+                                <div className="col-span-full text-center py-8">
+                                    <p className="text-gray-500 dark:text-gray-400">No hay artículos disponibles</p>
+                                </div>
+                            ) : (
+                                posts.map((article, i) => {
+                                    // Manejar categoría como string u objeto
+                                    const categoryName = typeof article.category === 'string' 
+                                        ? article.category 
+                                        : article.category?.name || 'Sin categoría';
+                                    
+                                    return (
+                                    <motion.article
+                                        key={article.id}
+                                        className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-500"
+                                        onMouseEnter={() => setHoveredCard(article.id)}
+                                        onMouseLeave={() => setHoveredCard(null)}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                        variants={fadeInUp}
+                                        custom={i + 1}
+                                    >
+                                        {/* Gradiente decorativo */}
+                                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
 
-                                    <div className="p-8">
-                                        {/* Categoría y metadata */}
-                                        <div className="flex items-center justify-between mb-4">
-                                            <span
-                                                className={`px-3 py-1 rounded-full text-xs font-semibold ${article.categoryColor}`}
-                                            >
-                                                {article.category}
-                                            </span>
+                                        <div className="p-8">
+                                            {/* Categoría y metadata */}
+                                            <div className="flex items-center justify-between mb-4">
+                                                <span
+                                                    className={`px-3 py-1 rounded-full text-xs font-semibold ${article.categoryColor}`}
+                                                >
+                                                    {categoryName}
+                                                </span>
                                             <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
                                                 <span>{article.readTime}</span>
                                                 <span>•</span>
@@ -133,14 +148,16 @@ export const HomePage = () => {
                                     {/* Hover effect overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                                 </motion.article>
-                            ))}
+                                    );
+                                })
+                            )}
                         </div>
 
                         {/* Call to action final */}
                         <motion.div
                             className="text-center mt-16"
                             variants={fadeInUp}
-                            custom={articles.length + 1}
+                            custom={posts.length + 1}
                         >
                             <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 dark:from-blue-500 dark:to-purple-500">
                                 Ver todos los artículos

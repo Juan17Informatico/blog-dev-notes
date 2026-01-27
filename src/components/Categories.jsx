@@ -6,9 +6,9 @@ import {
   FolderKanban,
   BookOpenCheck,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { getAllCategories } from "../helpers/getAllCategories";
+import { useCategories } from "../hooks/useApi";
 
 // const categoryList = [
 //   {
@@ -44,14 +44,12 @@ import { getAllCategories } from "../helpers/getAllCategories";
 // ];
 
 export const Categories = () => {
-
-  const [categories, setCategories] = useState([]);
+  const { categories, loading, error, loadCategories } = useCategories();
   const color = useRef("bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300");
 
   useEffect(() => {
-    getAllCategories().then(setCategories);
-
-  }, []);
+    loadCategories();
+  }, [loadCategories]);
 
   return (
     <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-500">
@@ -64,21 +62,31 @@ export const Categories = () => {
         </h2>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {categories.map((cat, index) => {
-            console.log({ categories });
-
-            const Icon = cat?.icon;
-            return (
-              <NavLink
-                key={index}
-                to={`/categories/${cat}`}
-                className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 ${color.current} hover:scale-105`}
-              >
-                {Icon && (<Icon className="w-4 h-4" />)}
-                {cat}
-              </NavLink>
-            );
-          })}
+          {loading ? (
+            <p className="text-gray-500 dark:text-gray-400">Cargando categorías...</p>
+          ) : error ? (
+            <p className="text-red-500 dark:text-red-400">Error: {error}</p>
+          ) : categories.length === 0 ? (
+            <p className="text-gray-500 dark:text-gray-400">No hay categorías disponibles</p>
+          ) : (
+            categories.map((cat, index) => {
+              // Manejar categorías como string o como objeto
+              const categoryName = typeof cat === 'string' ? cat : cat?.name;
+              const categoryId = typeof cat === 'string' ? cat : cat?.id;
+              const Icon = cat?.icon;
+              
+              return (
+                <NavLink
+                  key={categoryId || index}
+                  to={`/categories/${categoryName}`}
+                  className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 ${color.current} hover:scale-105`}
+                >
+                  {Icon && (<Icon className="w-4 h-4" />)}
+                  {categoryName}
+                </NavLink>
+              );
+            })
+          )}
         </div>
       </div>
     </section>
