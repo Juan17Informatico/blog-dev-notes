@@ -37,7 +37,9 @@ axiosClient.interceptors.response.use(
         if (error.response?.status === 401) {
             // Token expirado o inválido
             localStorage.removeItem('auth_token');
-            window.location.href = '/login';
+            const { VITE_ADMIN_PATH } = getEnvVariables();
+            const loginPath = VITE_ADMIN_PATH ? `/${VITE_ADMIN_PATH}/login` : '/login';
+            window.location.href = loginPath;
         }
         return Promise.reject(error);
     }
