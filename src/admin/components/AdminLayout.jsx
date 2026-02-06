@@ -20,9 +20,9 @@ export const AdminLayout = () => {
                 </div>
 
                 <nav className="space-y-2">
-                    <Link to="/" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Overview</Link>
-                    <Link to="posts" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Posts</Link>
-                    <Link to="categories" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Categories</Link>
+                    <Link to="/admin" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Overview</Link>
+                    <Link to="/admin/posts" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Posts</Link>
+                    <Link to="/admin/categories" className="block px-2 py-1 text-gray-700 dark:text-gray-200">Categories</Link>
                 </nav>
 
                 <div className="mt-6">
