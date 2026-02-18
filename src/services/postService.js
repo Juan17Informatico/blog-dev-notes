@@ -38,7 +38,7 @@ export const fetchPostBySlug = async (slug) => {
     setError(null);
 
     try {
-        const response = await axiosClient.get(`/posts/${slug}`);
+        const response = await axiosClient.get(`/posts/slug/${slug}`);
         const post = response.data.data || response.data;
         setCurrentPost(post);
         return post;
@@ -126,12 +126,12 @@ export const createPost = async (postData) => {
 /**
  * Actualiza un post (requiere autenticación)
  */
-export const updatePost = async (slug, postData) => {
+export const updatePost = async (id, postData) => {
     const { setError } = usePostsStore.getState();
     setError(null);
 
     try {
-        const response = await axiosClient.put(`/posts/${slug}`, postData);
+        const response = await axiosClient.put(`/posts/${id}`, postData);
         return response.data.data || response.data;
     } catch (error) {
         const errorMessage = error.response?.data?.message || error.message || 'Error updating post';
@@ -144,12 +144,12 @@ export const updatePost = async (slug, postData) => {
 /**
  * Elimina un post (requiere autenticación)
  */
-export const deletePost = async (slug) => {
+export const deletePost = async (id) => {
     const { setError } = usePostsStore.getState();
     setError(null);
 
     try {
-        const response = await axiosClient.delete(`/posts/${slug}`);
+        const response = await axiosClient.delete(`/posts/${id}`);
         return response.data;
     } catch (error) {
         const errorMessage = error.response?.data?.message || error.message || 'Error deleting post';
