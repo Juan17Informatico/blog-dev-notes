@@ -98,7 +98,7 @@ export const HomePage = () => {
                                             {/* Categoría y metadata */}
                                             <div className="flex items-center justify-between mb-4">
                                                 <span
-                                                    className={`px-3 py-1 rounded-full text-xs font-semibold ${article.categoryColor}`}
+                                                    className={`px-3 py-1 rounded-full text-xs dark:text-gray-300 font-normal ${article.categoryColor}`}
                                                 >
                                                     {categoryName}
                                                 </span>
@@ -159,9 +159,12 @@ export const HomePage = () => {
                             variants={fadeInUp}
                             custom={posts.length + 1}
                         >
-                            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 dark:from-blue-500 dark:to-purple-500">
+                            <NavLink
+                                to="/all-posts"
+                                className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 dark:from-blue-500 dark:to-purple-500"
+                            >
                                 Ver todos los artículos
-                            </button>
+                            </NavLink>
                         </motion.div>
                     </div>
                 </motion.section>

@@ -11,23 +11,18 @@ export const Post = () => {
 
   if (!post) {
     return (
-      <div className="p-6 max-w-3xl mx-auto text-center">
-        <p className="text-gray-500 dark:text-gray-400">Cargando post...</p>
+      <div className="p-8 max-w-3xl mx-auto text-center">
+        <div className="inline-block w-48 h-2 rounded-full bg-gray-200 dark:bg-gray-700 animate-pulse" />
+        <p className="mt-4 text-gray-500 dark:text-gray-400">Cargando post...</p>
       </div>
     );
   }
 
-  const { title, readTime, difficulty, content } = post;
-
+  const { content } = post;
+  
   return (
-    <div className="p-6 max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-md dark:shadow-lg transition-colors duration-300">
-      <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">{title}</h1>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-        {readTime} • {difficulty}
-      </p>
-      <hr className="my-4 border-gray-300 dark:border-gray-600" />
-
-      <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:scroll-mt-20">
+    <div className="my-8 p-8 md:p-10 max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+      <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:scroll-mt-20 [&_pre]:rounded-lg [&_pre]:p-4 [&_pre]:bg-gray-100 [&_pre]:text-gray-900 [&_pre]:dark:bg-gray-900 [&_pre]:dark:text-gray-100 [&_code]:rounded [&_code]:px-1 [&_code]:py-0.5 [&_code]:bg-gray-100 [&_code]:text-sm [&_code]:dark:bg-gray-700">
         <ReactMarkdown
           rehypePlugins={[rehypeRaw, rehypeHighlight]}
           remarkPlugins={[remarkGfm]}

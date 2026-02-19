@@ -5,6 +5,7 @@ import { AboutMe } from "../components/AboutMe";
 import { Footer } from "../components/Footer";
 import { Post } from "../components/Post";
 import { CategoryPage } from "../pages/CategoryPage";
+import { AllPostsPage } from "../pages/AllPostsPage";
 import { getEnvVariables } from "../helpers/getEnvVariables";
 import { AdminRouter } from "../admin/routes/AdminRouter";
 
@@ -19,6 +20,7 @@ export const BlogAppRouter = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutMe />} />
+                    <Route path="/all-posts" element={<AllPostsPage />} />
                     <Route path="/categories/:category" element={<CategoryPage />} />
                     <Route path="/post/:post" element={<Post />} />
                     <Route path={`/${VITE_ADMIN_PATH}/*`} element={<AdminRouter />} />
